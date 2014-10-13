@@ -95,6 +95,14 @@
             </div>
             <div class="box-content">
                 <?php echo $this->getPaymentInfoHtml() ?>
+                <br/>
+                <?php
+                // Segunda via Boleto
+                if ((strpos ( $this->getPaymentInfoHtml (), "Boleto" ) !== false) && ($_order->getStatus () == $this->__ ( Mage::getStoreConfig ( 'payment/boleto_bancario/order_status' ) ))) {
+                    echo "<a href=\"" . $this->getUrl ( 'boleto/standard/view/order_id/' . $_order->getId () ) . "\" class=\"link-cart\" onclick=\"this.target='_blank'\" style=\"font-size:1.2em;color:#ec741b\">" . $this->__ ( ' 2&#170; Via do Boleto' ) . "</a>";
+                }
+                // Segunda via Boleto?>
+
             </div>
         </div>
     </div>
