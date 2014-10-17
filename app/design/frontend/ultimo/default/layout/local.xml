@@ -177,7 +177,14 @@
 		<reference name="header">
 
 			<!-- Welcome message displayed as a block (added after Magento 1.7.0.2) -->
-			<block type="page/html_welcome" name="welcome" as="welcome"/>
+			<block type="page/html_welcome" name="welcome" as="welcome">
+                <action method="setEsiOptions">
+                    <params>
+                        <access>public</access>
+                        <scope>global</scope>
+                    </params>
+                </action>
+            </block>
 		
 			<!-- Add mini cart to the header -->			
 			<block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/mini.phtml" before="-">
