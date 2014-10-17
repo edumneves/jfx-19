@@ -26,7 +26,14 @@
 
 		<reference name="top.menu">
 			<action method="unsetChild"><name>catalog.topnav</name></action>
-			<block type="ultramegamenu/navigation" name="catalog.topnav.menu" template="infortis/ultramegamenu/mainmenu.phtml"/>
+			<block type="ultramegamenu/navigation" name="catalog.topnav.menu" template="infortis/ultramegamenu/mainmenu.phtml">
+                <action method="setEsiOptions">
+                    <params>
+                        <access>public</access>
+                        <scope>global</scope>
+                    </params>
+                </action>
+            </block>
 		</reference>
 		
 		<reference name="catalog.topnav.menu">
