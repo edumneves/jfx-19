@@ -318,12 +318,6 @@
 				<action method="setBlockId"><block_id>block_footer_bottom</block_id></action>
 			</block>
 
-            <action method="setEsiOptions">
-                <params>
-                    <access>public</access>
-                    <scope>global</scope>
-                </params>
-            </action>
 		</reference>
 		
 	</default>
