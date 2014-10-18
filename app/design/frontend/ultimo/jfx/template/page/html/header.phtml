@@ -113,7 +113,7 @@
 	}
 
 	//Mini cart
-	$miniCartHtml = $this->getChildHtml('cart_sidebar');
+	$miniCartHtml = $this->getChildHtml('cart_mini_sidebar');
 	if ($miniCartHtml) 
 	{
 		$skipLinksCount++;
@@ -314,9 +314,9 @@
 
 						<?php if (isset($p['rightColBreak'][0])) echo $p['rightColBreak'][0]; ?>
 
+                        TESTE NOVO <br/>
 						<?php if ($miniCartHtml): //Mini cart ?>
 							<div id="mini-cart-wrapper-regular">
-								TESTE EDU <br/>
                                 <?php echo $miniCartHtml; ?>
 							</div>
 						<?php endif; ?>
