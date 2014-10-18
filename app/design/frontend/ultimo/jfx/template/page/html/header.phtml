@@ -113,7 +113,7 @@
 	}
 
 	//Mini cart
-	$miniCartHtml = $this->getChildHtml('cart_mini_sidebar');
+	$miniCartHtml = $this->getChildHtml('cartMiniSidebar');
 	if ($miniCartHtml) 
 	{
 		$skipLinksCount++;
@@ -307,7 +307,6 @@
 
 					<!-- Right column -->
 					<div class="hp-block user-menu clearer <?php echo $rightColGridClass; ?>">
-                        HEADER EDU<br>
 						<?php if (isset($p['rightCol'][0])): ?>
 							<div id="header-search" class="search-wrapper-p0 <?php echo $searchClasses; ?> skip-content skip-content--style"><?php echo $p['rightCol'][0]; ?></div>
 						<?php endif; ?>
