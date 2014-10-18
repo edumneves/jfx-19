@@ -15,8 +15,10 @@ class Infortis_Brands_Block_Abstract extends Mage_Core_Block_Template
 
     public function getBrand($x10)
     {
-//        $x11 = $x10->getResource()->getAttribute($this->getBrandAttributeId());
-//          return trim($x11->getFrontend()->getValue($x10));
+        $x11 = $x10->getResource()->getAttribute($this->getBrandAttributeId());
+        if (isset($x11))
+            return trim($x11->getFrontend()->getValue($x10));
+        else
             return '';
     }
 
