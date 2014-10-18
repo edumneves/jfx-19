@@ -178,12 +178,6 @@
 
 			<!-- Welcome message displayed as a block (added after Magento 1.7.0.2) -->
 			<block type="page/html_welcome" name="welcome" as="welcome">
-                <action method="setEsiOptions">
-                    <params>
-                        <access>public</access>
-                        <scope>global</scope>
-                    </params>
-                </action>
             </block>
 		
 			<!-- Add mini cart to the header -->			
