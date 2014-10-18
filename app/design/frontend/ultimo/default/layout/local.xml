@@ -120,7 +120,7 @@
 		<!-- Right ====================================================================== -->
 		<reference name="right">
 		
-			<action method="unsetChild"><name>cart_sidebar</name></action>
+			<action method="unsetChild"><name>mini_cart</name></action>
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
 			<action method="unsetChild"><name>right.reports.product.compared</name></action>
 			<action method="unsetChild"><name>right.reports.product.viewed</name></action>
@@ -187,7 +187,7 @@
             </block>
 		
 			<!-- Add mini cart to the header -->			
-			<block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/mini.phtml" before="-">
+			<block type="checkout/cart_sidebar" name="cart_sidebar" as="mini_sidebar" template="checkout/cart/mini.phtml" before="-">
 				<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
 				<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
 				<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
@@ -698,7 +698,7 @@
 
 		<reference name="left">
 			<!-- Remove cart from the left column -->
-			<action method="unsetChild"><name>cart_sidebar</name></action>
+			<action method="unsetChild"><name>mini_cart</name></action>
 			
 			<!-- Remove Compare block, it is already inserted in DEFAULT section -->
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
