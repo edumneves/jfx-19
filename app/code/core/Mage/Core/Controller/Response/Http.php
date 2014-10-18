@@ -53,48 +53,72 @@ class Mage_Core_Controller_Response_Http extends Zend_Controller_Response_Http
             return $this;
         }
 
-        if (substr(php_sapi_name(), 0, 3) == 'fpm') {
-            $statusSent  = FALSE;
-            // REWRITE START
-            $contentSent = FALSE;
-            // REWRITE END
-            foreach ($this->_headersRaw as $i=>$header) {
-                if (stripos($header, 'status:')===0 || stripos($header, 'http/1.1')===0) {
-                    if ($statusSent) {
-                        unset($this->_headersRaw[$i]);
-                    } else {
-                        $statusSent = true;
-                    }
+        if (in_array(substr(php_sapi_name(), 0, 3), array('cgi', 'fpm'))) {
+            // remove duplicate headers
+            $remove = array('status', 'content-type');
+
+            // already sent headers
+            $sent = array();
+            foreach (headers_list() as $header) {
+                // parse name
+                if (!$pos = strpos($header, ':')) {
+                    continue;
                 }
-                // REWRITE START
-                if (stripos($header, 'content-type')===0) {
-                    if ($contentSent) {
-                        unset($this->_headersRaw[$i]);
-                    } else {
-                        $contentSent = true;
-                    }
-                }
-                // REWRITE END
+                $sent[strtolower(substr($header, 0, $pos))] = true;
             }
+
+            // raw headers
+            $headersRaw = array();
+            foreach ($this->_headersRaw as $i=>$header) {
+                // parse name
+                if (!$pos = strpos($header, ':'))
+                    continue;
+                $name = strtolower(substr($header, 0, $pos));
+
+                if (in_array($name, $remove)) {
+                    // check sent headers
+                    if (isset($sent[$name]) && $sent[$name]) {
+                        unset($this->_headersRaw[$i]);
+                        continue;
+                    }
+
+                    // check header
+                    if (isset($headers[$name]) && !is_null($existing = $headers[$name])) {
+                        $this->_headersRaw[$existing] = $header;
+                        unset($this->_headersRaw[$i]);
+                    } else {
+                        $headersRaw[$name] = $i;
+                    }
+                }
+            }
+
+            // object headers
+            $headers = array();
             foreach ($this->_headers as $i=>$header) {
-                if (strcasecmp($header['name'], 'status')===0 || strcasecmp($header['name'], 'Http/1.1')===0) {
-                    if ($statusSent) {
+                $name = strtolower($header['name']);
+                if (in_array($name, $remove)) {
+                    // check sent headers
+                    if (isset($sent[$name]) && $sent[$name]) {
+                        unset($this->_headers[$i]);
+                        continue;
+                    }
+
+                    // check header
+                    if (isset($headers[$name]) && !is_null($existing = $headers[$name])) {
+                        $this->_headers[$existing] = $header;
                         unset($this->_headers[$i]);
                     } else {
-                        $statusSent = true;
+                        $headers[$name] = $i;
+                    }
+
+                    // check raw headers
+                    if (isset($headersRaw[$name]) && !is_null($existing = $headersRaw[$name])) {
+                        unset($this->_headersRaw[$existing]);
                     }
                 }
-                // REWRITE START
-                if (strcasecmp($header['name'], 'content-type')===0) {
-                    if ($contentSent) {
-                        unset($this->_headers[$i]);
-                    } else {
-                        $contentSent = true;
-                    }
-                }
-                // REWRITE END
             }
         }
+
         parent::sendHeaders();
     }
 
