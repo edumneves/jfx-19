@@ -49,10 +49,10 @@ $carteira = $dadosboleto["carteira"];
 //nosso_numero no maximo 8 digitos
 
 //correcao da formatação do erro no boleto enviado por Thiago <thiago@4media.com.br>
-//$nnum = formata_numero($dadosboleto["nosso_numero"],8,0);
+$nnum = formata_numero($dadosboleto["nosso_numero"],8,0);
 
 //agora fica assim: Nosso_numero no maximo 8 digitos / Testado utilizando a carteira 176
-$nnum = formata_numero($dadosboleto["nosso_numero"]-90000000,8,0);
+//$nnum = formata_numero($dadosboleto["nosso_numero"]-90000000,8,0);
 
 
 
