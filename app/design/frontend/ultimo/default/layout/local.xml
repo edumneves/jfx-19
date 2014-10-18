@@ -120,7 +120,7 @@
 		<!-- Right ====================================================================== -->
 		<reference name="right">
 		
-			<action method="unsetChild"><name>mini_sidebar</name></action>
+			<action method="unsetChild"><name>cart_sidebar</name></action>
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
 			<action method="unsetChild"><name>right.reports.product.compared</name></action>
 			<action method="unsetChild"><name>right.reports.product.viewed</name></action>
@@ -187,38 +187,15 @@
             </block>
 		
 			<!-- Add mini cart to the header -->			
-			<block type="checkout/cart_sidebar" name="cart_sidebar" as="mini_sidebar" template="checkout/cart/mini.phtml" before="-">
+			<block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/mini.phtml" before="-">
 				<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
 				<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
 				<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
-                <!--<action method="setEsiOptions">-->
-                    <!--<params>-->
-                        <!--<access>private</access>-->
-                        <!--<scope>global</scope>-->
-                        <!--<flush_events>-->
-                            <!--<wishlist_item_save_after/>-->
-                            <!--<wishlist_item_delete_after/>-->
-                            <!--<sales_quote_save_after/>-->
-                        <!--</flush_events>-->
-                    <!--</params>-->
-                <!--</action>-->
 				<block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
 					<label>Shopping Cart Sidebar Extra Actions</label>
-                    <action method="setEsiOptions">
-                        <params>
-                            <access>private</access>
-                            <scope>global</scope>
-                        </params>
-                    </action>
-                </block>
+				</block>
 				<block type="cms/block" name="block_mini_cart_above_products">
 					<action method="setBlockId"><block_id>block_mini_cart_above_products</block_id></action>
-                    <action method="setEsiOptions">
-                        <params>
-                            <access>private</access>
-                            <scope>global</scope>
-                        </params>mini_sidebar
-                    </action>
 				</block>
 			</block>
 			
@@ -341,13 +318,7 @@
 				<action method="setBlockId"><block_id>block_footer_bottom</block_id></action>
 			</block>
 
-            <action method="setEsiOptions">
-                <params>
-                    <access>public</access>
-                    <scope>global</scope>
-                </params>
-            </action>
-        </reference>
+		</reference>
 		
 	</default>
 	
@@ -698,7 +669,7 @@
 
 		<reference name="left">
 			<!-- Remove cart from the left column -->
-			<action method="unsetChild"><name>mini_sidebar</name></action>
+			<action method="unsetChild"><name>cart_sidebar</name></action>
 			
 			<!-- Remove Compare block, it is already inserted in DEFAULT section -->
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
