@@ -6,11 +6,11 @@
 
 @font-face {
 	font-family: 'ThemeIcons';
-	src:url('../../../fonts/themeicons/ThemeIcons.eot?387osh');
-	src:url('../../../fonts/themeicons/ThemeIcons.eot?#iefix387osh') format('embedded-opentype'),
-		url('../../../fonts/themeicons/ThemeIcons.woff?387osh') format('woff'),
-		url('../../../fonts/themeicons/ThemeIcons.ttf?387osh') format('truetype'),
-		url('../../../fonts/themeicons/ThemeIcons.svg?387osh#ThemeIcons') format('svg');
+	src:url('http://jfxrockwear.com.br/skin/frontend/ultimo/default/fonts/themeicons/ThemeIcons.eot?387osh');
+	src:url('http://jfxrockwear.com.br/skin/frontend/ultimo/default/fonts/themeicons/ThemeIcons.eot?#iefix387osh') format('embedded-opentype'),
+		url('http://jfxrockwear.com.br/skin/frontend/ultimo/default/fonts/themeicons/ThemeIcons.woff?387osh') format('woff'),
+		url('http://jfxrockwear.com.br/skin/frontend/ultimo/default/fonts/themeicons/ThemeIcons.ttf?387osh') format('truetype'),
+		url('http://jfxrockwear.com.br/skin/frontend/ultimo/default/fonts/themeicons/ThemeIcons.svg?387osh#ThemeIcons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
