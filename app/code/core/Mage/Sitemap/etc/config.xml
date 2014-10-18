@@ -90,7 +90,7 @@
                 <changefreq>daily</changefreq>
             </product>
             <generate>
-                <enabled>0</enabled>
+                <enabled>1</enabled>
                 <error_email/>
                 <error_email_template>sitemap_generate_error_email_template</error_email_template>
                 <error_email_identity>general</error_email_identity>
