@@ -120,7 +120,7 @@
 		<!-- Right ====================================================================== -->
 		<reference name="right">
 		
-			<action method="unsetChild"><name>mini_cart</name></action>
+			<action method="unsetChild"><name>mini_sidebar</name></action>
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
 			<action method="unsetChild"><name>right.reports.product.compared</name></action>
 			<action method="unsetChild"><name>right.reports.product.viewed</name></action>
@@ -217,7 +217,7 @@
                         <params>
                             <access>private</access>
                             <scope>global</scope>
-                        </params>
+                        </params>mini_sidebar
                     </action>
 				</block>
 			</block>
@@ -698,7 +698,7 @@
 
 		<reference name="left">
 			<!-- Remove cart from the left column -->
-			<action method="unsetChild"><name>mini_cart</name></action>
+			<action method="unsetChild"><name>mini_sidebar</name></action>
 			
 			<!-- Remove Compare block, it is already inserted in DEFAULT section -->
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
