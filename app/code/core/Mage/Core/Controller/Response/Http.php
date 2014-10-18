@@ -53,29 +53,49 @@ class Mage_Core_Controller_Response_Http extends Zend_Controller_Response_Http
             return $this;
         }
 
-        if (substr(php_sapi_name(), 0, 3) == 'cgi') {
-            $statusSent = false;
+        if (substr(php_sapi_name(), 0, 3) == 'fpm') {
+            $statusSent  = FALSE;
+            // REWRITE START
+            $contentSent = FALSE;
+            // REWRITE END
             foreach ($this->_headersRaw as $i=>$header) {
-                if (stripos($header, 'status:')===0) {
+                if (stripos($header, 'status:')===0 || stripos($header, 'http/1.1')===0) {
                     if ($statusSent) {
                         unset($this->_headersRaw[$i]);
                     } else {
                         $statusSent = true;
                     }
                 }
+                // REWRITE START
+                if (stripos($header, 'content-type')===0) {
+                    if ($contentSent) {
+                        unset($this->_headersRaw[$i]);
+                    } else {
+                        $contentSent = true;
+                    }
+                }
+                // REWRITE END
             }
             foreach ($this->_headers as $i=>$header) {
-                if (strcasecmp($header['name'], 'status')===0) {
+                if (strcasecmp($header['name'], 'status')===0 || strcasecmp($header['name'], 'Http/1.1')===0) {
                     if ($statusSent) {
                         unset($this->_headers[$i]);
                     } else {
                         $statusSent = true;
                     }
                 }
+                // REWRITE START
+                if (strcasecmp($header['name'], 'content-type')===0) {
+                    if ($contentSent) {
+                        unset($this->_headers[$i]);
+                    } else {
+                        $contentSent = true;
+                    }
+                }
+                // REWRITE END
             }
         }
-
-        return parent::sendHeaders();
+        parent::sendHeaders();
     }
 
     public function sendResponse()
