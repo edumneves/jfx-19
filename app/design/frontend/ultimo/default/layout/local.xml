@@ -181,7 +181,7 @@
                 <action method="setEsiOptions">
                     <params>
                         <access>private</access>
-                        <scope>global</scope>
+                        <scope>page</scope>
                     </params>
                 </action>
             </block>
