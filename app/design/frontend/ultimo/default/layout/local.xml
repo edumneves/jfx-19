@@ -180,8 +180,8 @@
 			<block type="page/html_welcome" name="welcome" as="welcome">
                 <action method="setEsiOptions">
                     <params>
-                        <access>private</access>
-                        <scope>page</scope>
+                        <access>public</access>
+                        <scope>global</scope>
                     </params>
                 </action>
             </block>
